@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+       <bean id="beanPostProcessor" class="com.ioc.demo.BeanPostProcessorImpl" />
+
+       <bean id="oil" class="com.ioc.demo.Enegry" init-method="myInit" destroy-method="myDestory">
+              <property name="enegry" value="汽油" />
+       </bean>
+       <bean id="oilCar" class="com.ioc.demo.OilCar">
+              <property name="enegryObj" ref="oil" />
+       </bean>
+
+       <bean id="ev" class="com.ioc.demo.Enegry" init-method="myInit" destroy-method="myDestory">
+              <property name="enegry" value="充电" />
+       </bean>
+       <bean id="evCar" class="com.ioc.demo.EvCar">
+              <property name="enegryObj" ref="ev" />
+       </bean>
+
+       <bean id="hev" class="com.ioc.demo.Enegry" init-method="myInit" destroy-method="myDestory">
+              <property name="enegry" value="油电混合" />
+       </bean>
+       <bean id="hevCar" class="com.ioc.demo.HevCar">
+              <property name="enegryObj" ref="hev" />
+       </bean>
+
+</beans>

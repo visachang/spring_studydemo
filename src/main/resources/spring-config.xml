@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="beanPostProcessor" class="com.ioc.di.BeanPostProcessorImpl" />
+
+       <bean id="role" class="com.ioc.di.Role" init-method="myInit" destroy-method="myDestory">
+              <constructor-arg index="0" value="1" />
+              <constructor-arg index="1" value="总经理" />
+              <constructor-arg index="2" value="管理者" />
+       </bean>
+
+       <bean id="role1" class="com.ioc.di.Role1" init-method="myInit" destroy-method="myDestory">
+              <property name="id" value="2" />
+              <property name="roleName" value="部门主管" />
+              <property name="note" value="管理者" />
+       </bean>
+
+       <bean id="user" class="com.ioc.di.User">
+              <property name="userId" value="1" />
+              <property name="userName" value="思聪" />
+              <property name="role" ref="role" />
+       </bean>
+
+</beans>

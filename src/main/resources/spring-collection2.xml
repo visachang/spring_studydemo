@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="role" class="com.ioc.di.Role" init-method="myInit" destroy-method="myDestory">
+              <constructor-arg index="0" value="1" />
+              <constructor-arg index="1" value="总经理" />
+              <constructor-arg index="2" value="管理者" />
+       </bean>
+
+       <bean id="user" class="com.ioc.di.User">
+              <property name="userId" value="1" />
+              <property name="userName" value="思聪" />
+              <property name="role" ref="role" />
+       </bean>
+
+       <bean id="collectionDi2" class="com.ioc.di.CollectionDi2">
+              <property name="set">
+                     <set>
+                            <ref bean="role" />
+                     </set>
+              </property>
+              <property name="list">
+                     <list>
+                            <ref bean="user" />
+                     </list>
+              </property>
+              <property name="map">
+                     <map>
+                            <entry key-ref="role" value-ref="user" />
+                     </map>
+              </property>
+       </bean>
+
+</beans>
